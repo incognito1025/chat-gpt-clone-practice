@@ -1,9 +1,5 @@
 import React from 'react';
 import { questions } from '../data';
-import nicon from "../assets/nicon.svg";
-import kicon from "../assets/kicon.svg";
-import openaiicon from "../assets/openai-icon.svg";
-import glarestaricon from "../assets/glare-star-icon.svg";
 
 
 const Sidebar = () => {
@@ -13,7 +9,7 @@ const Sidebar = () => {
       <div className="flex items-center w-full p-1 rounded-lg hover:bg-[#202123]">
         <div className="flex items-center space-x-2 cursor-pointer">
           <div className="bg-[#ececf1] rounded-full p-1 h-8 w-8">
-            <img src={openaiicon} alt="OpenAI Logo" />
+            <img src="/assets/openai-icon.svg" alt="OpenAI Logo" />
           </div>
           <h2 className="text-[#ececf1] font-semibold">New Chat</h2>
         </div>
@@ -39,7 +35,7 @@ const Sidebar = () => {
         <div className="flex flex-col space-y-4">
           <div className="flex items-center space-x-2 cursor-pointer">
             <div className="bg-[#ececf1] rounded-full p-1 h-8 w-8">
-              <img src={glarestaricon} alt="Glare Star Icon" />
+              <img src="/assets/glare-star-icon.svg" alt="Glare Star Icon" />
             </div>
 
             <div className="text-[#ececf1]">
@@ -49,8 +45,7 @@ const Sidebar = () => {
           </div>
 
           <div className="flex items-center space-x-1 cursor-pointer">
-            <img src={nicon} alt="n Icon" className="w-8 h-8 rounded-full"/>
-            <img src={kicon} alt="k Icon" className="w-8 h-8 rounded-full"/>
+            <img src="/assets/nklogo.png" alt="nklogo" className="w-8 h-8 rounded-full"/>
             <p className="text-[#ececf1]">Niki Khanam</p>
           </div>
         </div>
