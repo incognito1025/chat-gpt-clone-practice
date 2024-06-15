@@ -1,21 +1,26 @@
-import { Configuration, OpenAIApi } from "openai";
+import axios from 'axios';
 
-const configuration=new Configuration ({
-    apiKey:import.meta.env.VITE_OPENAI_KEY
-});
+const headers = {
+  'Content-Type': 'application/json',
+  'Authorization': `Bearer ${import.meta.env.VITE_OPENAI_API_KEY}`
+};
 
-delete configuration.baseOptions.headers['User-Agent'];
-const openai=new OpenAIApi(configuration);
+export const generateMessage = async (messages) => {
+  const requestData = {
+    model: "gpt-3.5-turbo",
+    messages: messages,
+    temperature: 1,
+    max_tokens: 256,
+    top_p: 1,
+    frequency_penalty: 0,
+    presence_penalty: 0,
+  };
 
-export const generateMessage=async (prompt)=>{
-    const response=await openai.createCompletion({
-        model:"text-davinci-003",
-        prompt:`${prompt}`,
-        temperature:0.9,
-        max_tokens:256,
-        frequency_penalty:0.0,
-        presence_penalty:0.0
-    })
-
-    return response.data.choices[0].text;
+  try {
+    const response = await axios.post('https://api.openai.com/v1/chat/completions', requestData, { headers });
+    return response.data;
+  } catch (error) {
+    console.error('Error:', error);
+    throw error;
+  }
 };
